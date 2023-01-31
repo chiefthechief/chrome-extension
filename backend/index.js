@@ -11,7 +11,7 @@ app.use(bodyParser.json({ limit: "20mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }))
 app.use("/", routes)
 mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true })
-   .then(() => console.log("connected to databse"))
+   .then(() => console.log("connected to database"))
    .then(() => {
       app.listen(process.env.PORT, () => {
          console.log("server is up and running")
