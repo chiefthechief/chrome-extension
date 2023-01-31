@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
-const reminderSchema = mongoose.Schema({
+const reminderSchema = new Schema({
    header: {
       type: String,
       required: true
@@ -9,7 +10,6 @@ const reminderSchema = mongoose.Schema({
       type: String,
       required: true,
    }
-})
+}, { timestamps: true })
 
-const reminderModel = mongoose.model("reminder", reminderSchema)
-module.exports = reminderModel
+module.exports = mongoose.model("reminder", reminderSchema)
