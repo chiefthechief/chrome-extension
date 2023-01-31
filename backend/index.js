@@ -1,0 +1,20 @@
+const express = require("express")
+const cors = require("cors")
+const bodyParser = require("body-parser")
+const mongoose = require("mongoose")
+const routes = require("./utils/reminderRoutes")
+require("dotenv").config()
+
+const app = express()
+app.use(cors())
+app.use(bodyParser.json({ limit: "20mb", extended: true }))
+app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }))
+app.use("/", routes)
+mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true })
+   .then(() => console.log("connected to databse"))
+   .then(() => {
+      app.listen(process.env.PORT, () => {
+         console.log("server is up and running")
+      })
+   })
+   .catch(err => console.log(err))
