@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const reminderSchema = new Schema({
    header: {
       type: String,
-      required: true
+      required: false
    },
    body: {
       type: String,
